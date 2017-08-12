@@ -10,6 +10,25 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var Asciidoctor = require('asciidoctor.js');
 var processor = Asciidoctor();
+var fountain = require('@tibas.london/fountain')
+
+processor.Extensions.register(function() {
+  this.block(function() {
+    var self = this
+    self.named('fountain')
+    self.onContext('listing')
+    self.process(function(parent, reader) {
+      var lines = reader.getLines() 
+      return self.createBlock(
+        parent,
+        'pass',
+        '<div class="fountain-screenplay">' +
+          fountain(lines.join('\n')).html.script +
+          '</div>'
+      )
+    })
+  })
+})
 
 var convert_options = function (cliOptions) {
   var backend = cliOptions['backend'];

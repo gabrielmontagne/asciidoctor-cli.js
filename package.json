@@ -37,8 +37,9 @@
   },
   "homepage": "https://github.com/asciidoctor/asciidoctor-cli.js",
   "dependencies": {
+    "@tibas.london/fountain": "^0.1.0",
+    "asciidoctor.js": "1.5.6-preview.3",
     "cli": "^0.6.5",
-    "mkdirp": "^0.5.0",
-    "asciidoctor.js": "1.5.5-4"
+    "mkdirp": "^0.5.0"
   }
 }
